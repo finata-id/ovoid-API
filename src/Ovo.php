@@ -13,6 +13,7 @@ class Ovo
     /**
      * Base API
      * 
+     * @endpoint BASE
      * @var string
      */
     const BASE_API = "https://api.ovo.id";
@@ -20,6 +21,7 @@ class Ovo
     /**
      * AGW API
      * 
+     * @endpoint AGW
      * @var string
      */
     const AGW_API = "https://agw.ovo.id";
@@ -27,6 +29,7 @@ class Ovo
     /**
      * AWS API
      * 
+     * @endpoint AWS
      * @var string
      */
     const AWS_API = "https://api.cp1.ovo.id";
@@ -61,15 +64,17 @@ class Ovo
     
     /**
      * Device ID (UUIDV4)
-     * 
      * Generated from self::generateUUIDV4();
+     * 
+     * @var string
      */
     const device_id = "6AA4E427-D1B4-4B7E-9C22-F4C0F86F2CFD";
     
     /**
      * Push Notification ID (SHA256 Hash)
-     * 
      * Generated from self::generateRandomSHA256();
+     * 
+     * @var string
      */
     const push_notification_id = "e35f5a9fc1b61d0ab0c83ee5ca05ce155f82dcffee0605f1c70de38e662db362";
     
@@ -80,6 +85,8 @@ class Ovo
 	if ($auth_token) {
             $this->auth_token = $auth_token;
         }
+
+        
     }
     
     /**
@@ -126,7 +133,7 @@ class Ovo
         if ($this->auth_token) {
             array_push($headers, 'authorization: ' . $bearer . ' ' . $this->auth_token);
         }
-        
+
         return $headers;
     }
     

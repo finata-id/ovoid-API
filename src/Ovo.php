@@ -1,32 +1,76 @@
 <?php
 namespace Namdevel;
-/*
-@ Unofficial Ovo API PHP Class
-@ Author : namdevel
-@ Created at 04-03-2020 14:26
-@ Last Modified at 04-03-2022 13:21
-*/
+
+/**
+ * Unoffical Ovo API PHP Class
+ * 
+ * @author namdevel
+ * @created_at 04-03-2020 14:26
+ * @last_modified  04-03-2022 13:21
+ */
 class Ovo
 {
+    /**
+     * Base API
+     * 
+     * @var string
+     */
     const BASE_API = "https://api.ovo.id";
+    
+    /**
+     * AGW API
+     * 
+     * @var string
+     */
     const AGW_API = "https://agw.ovo.id";
+    
+    /**
+     * AWS API
+     * 
+     * @var string
+     */
     const AWS_API = "https://api.cp1.ovo.id";
     
+    /**
+     * Operating System
+     * 
+     * @var string
+     */
     const os = "iOS";
+
+    /**
+     * OVO Application Version
+     * 
+     * @var string
+     */
     const app_version = "3.54.0";
+
+    /**
+     * OVO Client ID (related with os)
+     * 
+     * @var string
+     */
     const client_id = "ovo_ios";
+
+    /**
+     * User Agent
+     * 
+     * @var string
+     */
     const user_agent = "OVO/21404 CFNetwork/1220.1 Darwin/20.3.0";
     
-    /*
-    @ Device ID (UUIDV4)
-    @ Generated from self::generateUUIDV4();
-    */
+    /**
+     * Device ID (UUIDV4)
+     * 
+     * Generated from self::generateUUIDV4();
+     */
     const device_id = "6AA4E427-D1B4-4B7E-9C22-F4C0F86F2CFD";
     
-    /*
-    @ Push Notification ID (SHA256 Hash)
-    @ Generated from self::generateRandomSHA256();
-    */
+    /**
+     * Push Notification ID (SHA256 Hash)
+     * 
+     * Generated from self::generateRandomSHA256();
+     */
     const push_notification_id = "e35f5a9fc1b61d0ab0c83ee5ca05ce155f82dcffee0605f1c70de38e662db362";
     
     protected $auth_token, $hmac_hash, $hmac_hash_random;
@@ -38,10 +82,12 @@ class Ovo
         }
     }
     
-    /*
-    @ generateUUIDV4
-    @ generate random UUIDV4 for device ID
-    */
+    /**
+     * Generate UUID V4
+     * generate random UUIDV4 for device ID
+     * 
+     * @return string
+     */
     public function generateUUIDV4()
     {
         $data    = random_bytes(16);
@@ -50,10 +96,12 @@ class Ovo
         return strtoupper(vsprintf("%s%s-%s-%s-%s-%s%s%s", str_split(bin2hex($data), 4)));
     }
     
-    /*
-    @ generateRandomSHA256
-    @ generate random SHA256 hash for push notification ID
-    */
+    /**
+     * Generate SHA256 
+     * generate random SHA256 hash for push notification ID
+     * 
+     * @return string
+     */
     public function generateRandomSHA256()
     {
         return hash_hmac("sha256", time(), "ovo-apps");
